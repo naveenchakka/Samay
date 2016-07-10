@@ -1,0 +1,84 @@
+﻿
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="Aspfiles_MasterPage"  %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+   
+    <title>CONTEXT SMS ADMIN</title>
+    <link href="../css/bootstrap.css" rel="stylesheet" media="screen" />
+    <link href="../css/thin-admin.css" rel="stylesheet" media="screen" />
+    <link href="../css/font-awesome.css" rel="stylesheet" media="screen" />
+    <link href="../style/dashboard.css" rel="stylesheet" />
+    <link href="../style/style.css" rel="stylesheet" />
+    <script src="js/ezval-1.0.js"></script>
+    <script src="js/common.js"></script>
+    <script type = "text/javascript">
+        function Confirm() {
+            var confirm_value = document.createElement("INPUT");
+            confirm_value.type = "hidden";
+            confirm_value.name = "confirm_value";
+            if (confirm("Do you want to logout?")) {
+                confirm_value.value = "Yes";
+            } else {
+                confirm_value.value = "No";
+            }
+            document.forms[0].appendChild(confirm_value);
+        }
+    </script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    
+    <form id="form1" runat="server" >
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        <div class="container">
+            <div class="top-navbar header b-b">
+                <a data-original-title="Toggle navigation" class="toggle-side-nav pull-left" href="#"><i class="icon-reorder"></i></a>
+                <div class="brand pull-left"><a href="index.html">
+                    <img src="../images/logo2.png" alt="Context SMS" /></a></div>
+                <ul class="nav navbar-nav navbar-right navi-top hidden-xs">
+                    <li class="balance-sms">Welcome! SMS Balance 10000 | Transaction</li>
+                    <li class="dropdown user  hidden-xs"><a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-male"></i><span class="username">
+                        <asp:Label ID="lblUserName" runat="server" Text=""></asp:Label></span> <i class="icon-caret-down small"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="User_profile.aspx"><i class="icon-user"></i>My Profile</a></li>
+                            <li class="divider"></li>
+                            <li>
+                                <asp:LinkButton ID="lbtnLogout" runat="server" OnClick="lbtnLogout_Click" CausesValidation="false" OnClientClick="Confirm()">
+                                    <i class="icon-key"></i>LogOut</asp:LinkButton></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="left-nav">
+                <div id="side-nav">
+                    <ul id="nav">
+                        <li><a href="#"><i class="icon-comment"></i>Leaves<span class="label label-info pull-right">5</span> <i class="arrow icon-angle-left"></i></a>
+                            <ul class="sub-menu opened">
+                                <li><a href="Send-single-sms.aspx"><i class="icon-angle-right"></i>Apply Leave</a></li>
+                                <li><a href="SendBulkSms.aspx"><i class="icon-angle-right"></i>Leave Status</a> </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="page-content">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+        <div class="bottom-nav footer">2014 &copy; Context Technologies. </div>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="../js/jquery.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="../js/smooth-sliding-menu.js"></script>
+    </form>
+</body>
+</html>
+
+
